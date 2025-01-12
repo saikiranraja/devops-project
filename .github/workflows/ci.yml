@@ -40,10 +40,10 @@ jobs:
       - name: Deploy to Staging Server
         run: |
           # Deploy using rsync or scp to your EC2 instance
-          rsync -avz --delete -e "ssh -i private_key.pem -o StrictHostKeyChecking=no" ./ ubuntu@your-ec2-public-ip:/path/to/your/staging/directory
+          rsync -avz --delete -e "ssh -i private_key.pem -o StrictHostKeyChecking=no" ./ ubuntu@13.234.21.157:/var/www/html/
 
           # Restart the application (if needed)
-          ssh -i private_key.pem -o StrictHostKeyChecking=no ubuntu@your-ec2-public-ip "systemctl restart your-application.service"
+          ssh -i private_key.pem -o StrictHostKeyChecking=no ubuntu@13.234.21.157 "systemctl restart apache2.service"
 
       - name: Clean up SSH key
         run: rm -f private_key.pem  # Clean up the private key after deployment
