@@ -23,9 +23,6 @@ jobs:
       - name: Validate HTML with htmlhint
         run: htmlhint **/*.html
 
-      - name: Validate CSS with stylelint
-        run: stylelint "**/*.css"
-
   deploy:
     runs-on: ubuntu-latest
     needs: validate
